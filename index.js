@@ -2,7 +2,8 @@ const funcs = {
   funcs: [
     {
       title: "trapArea",
-      desc: "Finds the area underneath a graph using trapezium approximation",
+      desc: `Finds the area underneath a graph using trapezium approximation
+      Calculates signed area, unsigned area and error`,
       ret: "The signed approximated area",
       requires: ["evalExpr"],
       remarks: "",
@@ -25,6 +26,11 @@ const funcs = {
         }
       ],
       changelog: [
+        {
+          version: "1.1.0",
+          date: "2026-09-01",
+          changes: "Added unsigned and error calculations"
+        },
         {
           version: "1.0.0",
           date: "2026-09-01",
