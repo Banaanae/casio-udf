@@ -18,11 +18,11 @@ const funcs = {
         },
         {
           name: "lower",
-          desc: "The start of the area to check"
+          desc: "The start of the area to find"
         },
         {
           name: "upper",
-          desc: "The end of the area to check"
+          desc: "The end of the area to find"
         }
       ],
       changelog: [
@@ -35,6 +35,64 @@ const funcs = {
           version: "1.0.0",
           date: "2026-09-01",
           changes: "Created trapArea"
+        }
+      ]
+    },
+    {
+      title: "unsgnInt",
+      desc: "Performs unsigned integration between two bounds",
+      ret: "The bounded area",
+      requires: ["roots"],
+      remarks: "",
+      args: [
+        {
+          name: "expression",
+          desc: "The expression to evaluate"
+        },
+        {
+          name: "lower",
+          desc: "The start of the area to find"
+        },
+        {
+          name: "upper",
+          desc: "The end of the area to find"
+        }
+      ],
+      changelog: [
+        {
+          version: "1.0.0",
+          date: "2026-09-02",
+          changes: "Created unsgnInt"
+        }
+      ]
+    },
+    {
+      title: "roots",
+      desc: `Finds the roots of an expresion for a given domain
+      Essentially solve(f(x)=0) but formatted to remove the x=
+      Probably not useful by itself`,
+      ret: "The list of roots",
+      requires: [],
+      remarks: "",
+      args: [
+        {
+          name: "expression",
+          desc: "The expression to evaluate"
+        },
+        {
+          name: "lower",
+          desc: "The start of the domain to check"
+        },
+        {
+          name: "upper",
+          desc: "The end of the domain to check"
+        }
+      ],
+      changelog: [
+        {
+          version: "1.0.0",
+          date: "2026-09-02",
+          changes: "Created roots"
         }
       ]
     },
