@@ -120,6 +120,26 @@ const funcs = {
           changes: "Created evalExpr"
         }
       ]
+    },
+    {
+      title: "isUndef",
+      desc: `Determines if the inputted expression is Undefined`,
+      ret: "TRUE/FALSE",
+      requires: [],
+      remarks: "",
+      args: [
+        {
+          name: "expression",
+          desc: "The expression to check"
+        }
+      ],
+      changelog: [
+        {
+          version: "1.0.0",
+          date: "2026-09-09",
+          changes: "Created isUndef"
+        }
+      ]
     }
   ]
 };
