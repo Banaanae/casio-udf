@@ -72,6 +72,34 @@ const funcs = {
       ]
     },
     {
+      title: "funcSP",
+      desc: `Finds all stationary points in a given domain`,
+      ret: "List of coordinates (as string)",
+      requires: ["roots", "join"],
+      remarks: "",
+      args: [
+        {
+          name: "expression",
+          desc: "The expression to check"
+        },
+        {
+          name: "lower",
+          desc: "The start of the domain to check"
+        },
+        {
+          name: "upper",
+          desc: "The end of the domain to check"
+        }
+      ],
+      changelog: [
+        {
+          version: "1.0.0",
+          date: "2026-10-07",
+          changes: "Created funcSP"
+        }
+      ]
+    },
+    {
       title: "roots",
       desc: `Finds the roots of an expresion for a given domain
       Essentially solve(f(x)=0) but formatted to remove the x=
@@ -153,6 +181,31 @@ const funcs = {
           version: "1.0.1",
           date: "2026-10-7",
           changes: "Fixed error if input is string"
+        }
+      ]
+    },
+    {
+      title: "join",
+      desc: `Joins two arbitrary inputs`,
+      ret: "STR",
+      requires: [],
+      remarks: `In some rare cases certain strings cause errors
+      Workaround: Use StrJoin command`,
+      args: [
+        {
+          name: "first",
+          desc: "Source string"
+        },
+        {
+          name: "second",
+          desc: "String to append to first"
+        }
+      ],
+      changelog: [
+        {
+          version: "1.0.0",
+          date: "2026-10-07",
+          changes: "Created join"
         }
       ]
     }
