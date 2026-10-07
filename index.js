@@ -75,7 +75,7 @@ const funcs = {
       title: "funcSP",
       desc: `Finds all stationary points in a given domain`,
       ret: "List of coordinates (as string)",
-      requires: ["roots", "join"],
+      requires: ["roots", "join", "evalExpr"],
       remarks: "",
       args: [
         {
