@@ -148,6 +148,11 @@ const funcs = {
           version: "1.0.0",
           date: "2026-09-09",
           changes: "Created isUndef"
+        },
+        {
+          version: "1.0.1",
+          date: "2026-10-7",
+          changes: "Fixed error if input is string"
         }
       ]
     }
