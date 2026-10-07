@@ -219,6 +219,7 @@ function add(func) {
   // Main card
   const card = document.createElement("div");
   card.className = "function-card";
+  card.id = func.title;
 
   // Header
   const header = document.createElement("div");
@@ -230,7 +231,7 @@ function add(func) {
 
   const download = document.createElement("a");
   download.className = "download-button";
-  download.href = `/bin/${func.title}-(Program).xcp`;
+  download.href = `./bin/${func.title}-(Program).xcp`;
   download.download = "";
   download.innerText = "Download";
 
@@ -398,7 +399,7 @@ document.getElementById("download-all").addEventListener("click", async () => {
     await Promise.all(
       funcs.funcs.map(async func => {
         const filename = `${func.title}-(Program).xcp`;
-        const response = await fetch(`/bin/${filename}`);
+        const response = await fetch(`./bin/${filename}`);
 
         if (!response.ok) {
           throw new Error(`Failed to download ${filename}`);
