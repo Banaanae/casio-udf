@@ -63,6 +63,11 @@ const funcs = {
           version: "1.0.0",
           date: "2026-09-02",
           changes: "Created unsgnInt"
+        },
+        {
+          version: "1.0.1",
+          date: "2026-09-06",
+          changes: "Removed debug prints"
         }
       ]
     },
@@ -93,6 +98,11 @@ const funcs = {
           version: "1.0.0",
           date: "2026-09-02",
           changes: "Created roots"
+        },
+        {
+          version: "1.0.1",
+          date: "2026-09-06",
+          changes: "Removed debug prints"
         }
       ]
     },
