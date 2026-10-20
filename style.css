@@ -89,6 +89,26 @@
   line-height: 1.5;
 }
 
+.function-separator {
+  grid-column: 1 / -1;
+  min-width: 0;
+  padding: 10px 0;
+}
+
+.function-separator hr {
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+  margin: 0 0 20px;
+}
+
+.function-separator .function-title {
+  margin-bottom: 8px;
+}
+
+.function-separator .function-description {
+  margin: 0;
+}
+
 .section-label {
   display: block;
   margin-bottom: 5px;

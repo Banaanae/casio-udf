@@ -5,7 +5,6 @@ const funcs = {
       desc: `Finds the area underneath a graph using trapezium approximation
       Calculates signed area, unsigned area and error`,
       ret: "The signed approximated area",
-      requires: ["evalExpr"],
       remarks: "",
       args: [
         {
@@ -27,14 +26,14 @@ const funcs = {
       ],
       changelog: [
         {
-          version: "1.1.0",
-          date: "2026-09-01",
-          changes: "Added unsigned and error calculations"
-        },
-        {
           version: "1.0.0",
           date: "2026-09-01",
           changes: "Created trapArea"
+        },
+        {
+          version: "1.1.0",
+          date: "2026-09-01",
+          changes: "Added unsigned and error calculations"
         }
       ]
     },
@@ -42,7 +41,6 @@ const funcs = {
       title: "unsgnInt",
       desc: "Performs unsigned integration between two bounds",
       ret: "The bounded area",
-      requires: ["roots"],
       remarks: "",
       args: [
         {
@@ -75,7 +73,6 @@ const funcs = {
       title: "funcSP",
       desc: `Finds all stationary points in a given domain`,
       ret: "List of coordinates (as string)",
-      requires: ["roots", "join", "evalExpr"],
       remarks: "",
       args: [
         {
@@ -100,12 +97,100 @@ const funcs = {
       ]
     },
     {
+      title: "normSolv",
+      desc: `Solves normal distribution questions in the style of:
+      15% of balls weigh less than 5kg, 10% of balls weigh more than 6kg
+      Find standard deviation and mean.
+      Use normSolv(0.15, 5, 0.1, 6)`,
+      ret: "Standard deviation and mean",
+      remarks: "",
+      args: [
+        {
+          name: "prob1",
+          desc: "The percentage of the data in the lower case"
+        },
+        {
+          name: "bound1",
+          desc: "The upper limit of the data in the lower case"
+        },
+        {
+          name: "prob2",
+          desc: "The percentage of the data in the upper case"
+        },
+        {
+          name: "bound2",
+          desc: "The lower limit of the data in the upper case"
+        }
+      ],
+      changelog: [
+        {
+          version: "1.0.0",
+          date: "2026-10-20",
+          changes: "Created normSolv"
+        }
+      ]
+    },
+    {
+      title: "simulInf",
+      desc: `Solves for when a system of
+      equations has infinite solutions`,
+      ret: "List of solutions for the parameter",
+      remarks: `Only works in 1 parameter questions
+      Paramater must be k`,
+      args: [
+        {
+          name: "x",
+          desc: "The first equation"
+        },
+        {
+          name: "y",
+          desc: "The second equation"
+        },
+      ],
+      changelog: [
+        {
+          version: "1.0.0",
+          date: "2026-10-20",
+          changes: "Created simulInf"
+        }
+      ]
+    },
+    {
+      title: "simulNil",
+      desc: `Solves for when a system of
+      equations has no solutions`,
+      ret: "List of solutions for the parameter",
+      remarks: `Only works in 1 parameter questions
+      Paramater must be k`,
+      args: [
+        {
+          name: "x",
+          desc: "The first equation"
+        },
+        {
+          name: "y",
+          desc: "The second equation"
+        },
+      ],
+      changelog: [
+        {
+          version: "1.0.0",
+          date: "2026-10-20",
+          changes: "Created simulNil"
+        }
+      ]
+    },
+    {
+      type: "sep",
+      title: "Helper functions",
+      desc: `If you're making your own functions you may find these helpful
+      Otherwise these have no purpose in an exam`
+    },
+    {
       title: "roots",
       desc: `Finds the roots of an expresion for a given domain
-      Essentially solve(f(x)=0) but formatted to remove the x=
-      Probably not useful by itself`,
+      Essentially solve(f(x)=0) but formatted to remove the x=`,
       ret: "The list of roots",
-      requires: [],
       remarks: "",
       args: [
         {
@@ -131,15 +216,18 @@ const funcs = {
           version: "1.0.1",
           date: "2026-09-06",
           changes: "Removed debug prints"
+        },
+        {
+          version: "1.0.2",
+          date: "2026-10-20",
+          changes: "Reduced file size (helper funcs)"
         }
       ]
     },
     {
       title: "evalExpr",
-      desc: `Evaluates an expression
-      Note: This is a helper function; not useful in your exams`,
+      desc: `Evaluates an expression at a specific point`,
       ret: "The evaluated expression",
-      requires: [],
       remarks: "The contents of variable x are always cleared",
       args: [
         {
@@ -160,10 +248,52 @@ const funcs = {
       ]
     },
     {
+      title: "exprCmp",
+      desc: `Literally compares two expressions to determine if they are the same`,
+      ret: "TRUE/FALSE",
+      remarks: "",
+      args: [
+        {
+          name: "x",
+          desc: "The first expression"
+        },
+        {
+          name: "y",
+          desc: "The second expression"
+        }
+      ],
+      changelog: [
+        {
+          version: "1.0.0",
+          date: "2026-10-20",
+          changes: "Created exprCmp"
+        }
+      ]
+    },
+    {
+      title: "isEqSelf",
+      desc: `Determines if the expression is equal to itself
+      Eg. k=k`,
+      ret: "TRUE/FALSE",
+      remarks: "",
+      args: [
+        {
+          name: "expression",
+          desc: "The expression to check"
+        }
+      ],
+      changelog: [
+        {
+          version: "1.0.0",
+          date: "2026-10-20",
+          changes: "Created isEqSelf"
+        }
+      ]
+    },
+    {
       title: "isUndef",
       desc: `Determines if the inputted expression is Undefined`,
       ret: "TRUE/FALSE",
-      requires: [],
       remarks: "",
       args: [
         {
@@ -188,7 +318,6 @@ const funcs = {
       title: "join",
       desc: `Joins two arbitrary inputs`,
       ret: "STR",
-      requires: [],
       remarks: `In some rare cases certain strings cause errors
       Workaround: Use StrJoin command`,
       args: [
@@ -206,6 +335,98 @@ const funcs = {
           version: "1.0.0",
           date: "2026-10-07",
           changes: "Created join"
+        },
+        {
+          version: "1.0.1",
+          date: "2026-10-20",
+          changes: "Reduced file size (helper funcs)"
+        }
+      ]
+    },
+    {
+      title: "listr",
+      desc: `Makes a list of the right side of every expression in a list`,
+      ret: "A list of expressions",
+      remarks: "",
+      args: [
+        {
+          name: "list",
+          desc: "The list to get the right side of"
+        }
+      ],
+      changelog: [
+        {
+          version: "1.0.0",
+          date: "2026-10-20",
+          changes: "Created listr"
+        }
+      ]
+    },
+    {
+      title: "listAnd",
+      desc: `Attempts to create the intersection of 2 lists`,
+      ret: "The intersected list",
+      remarks: `This function only works on = and ≠
+      < and > are not supported.`,
+      args: [
+        {
+          name: "x",
+          desc: "The first list to intersect"
+        },
+        {
+          name: "y",
+          desc: "The second list to intersect"
+        }
+      ],
+      changelog: [
+        {
+          version: "1.0.0",
+          date: "2026-10-20",
+          changes: "Created listAnd"
+        }
+      ]
+    },
+    {
+      title: "toStr",
+      desc: `Converts an arbitrary input to a string
+      Safer version of ExpToStr`,
+      ret: "STR",
+      remarks: "",
+      args: [
+        {
+          name: "expression",
+          desc: "The expression to convert"
+        }
+      ],
+      changelog: [
+        {
+          version: "1.0.0",
+          date: "2026-10-20",
+          changes: "Created toStr"
+        }
+      ]
+    },
+    {
+      title: "strSplit",
+      desc: `Separates a string into a list of substrings using the specified delimiter.`,
+      ret: "TRUE/FALSE",
+      remarks: "",
+      args: [
+        {
+          name: "string",
+          desc: "The string to split"
+        },
+        {
+          name: "delimiter",
+          desc: `String to split at
+          Use an empty string to split at every character`
+        }
+      ],
+      changelog: [
+        {
+          version: "1.0.0",
+          date: "2026-10-20",
+          changes: "Created strSplit"
         }
       ]
     }
@@ -215,6 +436,31 @@ const funcs = {
 
 function add(func) {
   const wrapper = document.getElementById("funcs");
+
+  if (func.type === "sep") {
+    const sep = document.createElement("div");
+    sep.className = "function-separator";
+
+    const hr = document.createElement("hr");
+    sep.appendChild(hr);
+
+    if (func.title) {
+      const title = document.createElement("h2");
+      title.className = "function-title";
+      title.innerText = func.title;
+      sep.appendChild(title);
+    }
+
+    if (func.desc) {
+      const desc = document.createElement("p");
+      desc.className = "function-description";
+      desc.innerText = func.desc;
+      sep.appendChild(desc);
+    }
+
+    wrapper.appendChild(sep);
+    return;
+  }
 
   // Main card
   const card = document.createElement("div");
@@ -229,14 +475,7 @@ function add(func) {
   title.className = "function-title";
   title.innerText = func.title;
 
-  const download = document.createElement("a");
-  download.className = "download-button";
-  download.href = `./bin/${func.title}-(Program).xcp`;
-  download.download = "";
-  download.innerText = "Download";
-
   header.appendChild(title);
-  header.appendChild(download);
 
   // Description
   const sub = document.createElement("p");
@@ -281,34 +520,6 @@ function add(func) {
 
     argsSection.appendChild(argRow);
   });
-
-  // Requires
-  let requiresSection;
-  if (func.requires && func.requires.length > 0) {
-    requiresSection = document.createElement("div");
-    requiresSection.className = "function-requires";
-
-    const requiresTitle = document.createElement("h3");
-    requiresTitle.innerText = "Requires";
-
-    requiresSection.appendChild(requiresTitle);
-
-    const requiresList = document.createElement("div");
-    requiresList.className = "requires-list";
-
-    func.requires.forEach(requirement => {
-      const link = document.createElement("a");
-
-      link.className = "require-link";
-      link.href = `#${requirement}`;
-      link.innerText = requirement;
-
-      requiresList.appendChild(link);
-    });
-
-    requiresSection.appendChild(requiresList);
-    card.appendChild(requiresSection);
-  }
 
   // Remarks
   let remarks;
@@ -376,8 +587,6 @@ function add(func) {
   card.appendChild(argsSection);
   if (remarks != undefined)
     card.appendChild(remarks);
-  if (requiresSection != undefined)
-    card.appendChild(requiresSection);
   if (changelog != undefined)
     card.appendChild(changelog);
 
@@ -398,15 +607,17 @@ document.getElementById("download-all").addEventListener("click", async () => {
 
     await Promise.all(
       funcs.funcs.map(async func => {
-        const filename = `${func.title}-(Program).xcp`;
-        const response = await fetch(`./bin/${filename}`);
+        if (func.type !== "sep") {
+          const filename = `${func.title}-(Program).xcp`;
+          const response = await fetch(`./bin/${filename}`);
 
-        if (!response.ok) {
-          throw new Error(`Failed to download ${filename}`);
+          if (!response.ok) {
+            throw new Error(`Failed to download ${filename}`);
+          }
+
+          const data = await response.blob();
+          zip.file(filename, data);
         }
-
-        const data = await response.blob();
-        zip.file(filename, data);
       })
     );
 
