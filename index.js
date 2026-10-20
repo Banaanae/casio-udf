@@ -6,6 +6,11 @@ const funcs = {
       Calculates signed area, unsigned area and error`,
       ret: "The signed approximated area",
       remarks: "",
+      example: {
+        q: "Use the trapezium rule to calculate the area bound between the x-axis and y=x^2-2 between 0 and 4 with 6 equal width trapeziums.",
+        a: `trapArea(x^2-2,6,0,4)
+        Give unsigned answer`
+      },
       args: [
         {
           name: "expression",
@@ -42,6 +47,10 @@ const funcs = {
       desc: "Performs unsigned integration between two bounds",
       ret: "The bounded area",
       remarks: "",
+      example: {
+        q: `Find the area bound between y=sin(x) and the x-axis between 0 and 2`,
+        a: `unsgnedInt(sin(x),0,2)`
+      },
       args: [
         {
           name: "expression",
@@ -74,6 +83,11 @@ const funcs = {
       desc: `Finds all stationary points in a given domain`,
       ret: "List of coordinates (as string)",
       remarks: "",
+      example: {
+        q: `What are the coordinates of the stationary points for y=x^3-x`,
+        a: `funcSP(x^3-x,-1000,1000)
+        Note: Infinity works too, useful for circular functions`
+      },
       args: [
         {
           name: "expression",
@@ -98,12 +112,14 @@ const funcs = {
     },
     {
       title: "normSolv",
-      desc: `Solves normal distribution questions in the style of:
-      15% of balls weigh less than 5kg, 10% of balls weigh more than 6kg
-      Find standard deviation and mean.
-      Use normSolv(0.15, 5, 0.1, 6)`,
+      desc: `Finds standard deviation and mean given two bounds and their probabilities`,
       ret: "Standard deviation and mean",
       remarks: "",
+      example: {
+        q: `15% of balls weigh less than 5kg, 10% of balls weigh more than 6kg
+      Find standard deviation and mean.`,
+        a: `normSolv(0.15, 5, 0.1, 6)`
+      },
       args: [
         {
           name: "prob1",
@@ -147,6 +163,13 @@ const funcs = {
           desc: "The second equation"
         },
       ],
+      example: {
+        q: `Given:
+        y=mx+3
+        y=3x+m
+        Find all values of m for which this system has infinite solutions`,
+        a: `simulInf(y=kx+3,y=3x+k)`
+      },
       changelog: [
         {
           version: "1.0.0",
@@ -162,6 +185,13 @@ const funcs = {
       ret: "List of solutions for the parameter",
       remarks: `Only works in 1 parameter questions
       Paramater must be k`,
+      example: {
+        q: `Given:
+        y=mx+3
+        y=3x+2m
+        Find all values of m for which this system has no solutions`,
+        a: `simulNil(y=kx+3,y=3x+2k)`
+      },
       args: [
         {
           name: "x",
@@ -538,6 +568,51 @@ function add(func) {
     remarks.appendChild(remarksText);
   }
 
+  // Example
+  let example;
+  if (func.example) {
+    example = document.createElement("details");
+    example.className = "function-example";
+
+    const title = document.createElement("summary");
+    title.className = "example-title";
+    title.innerText = "Example";
+    example.appendChild(title);
+
+    const content = document.createElement("div");
+    content.className = "example-content";
+
+    const question = document.createElement("div");
+    question.className = "example-item";
+
+    const questionLabel = document.createElement("span");
+    questionLabel.className = "section-label";
+    questionLabel.innerText = "Question";
+
+    const questionText = document.createElement("p");
+    questionText.innerText = func.example.q;
+
+    question.appendChild(questionLabel);
+    question.appendChild(questionText);
+
+    const answer = document.createElement("div");
+    answer.className = "example-item example-answer";
+
+    const answerLabel = document.createElement("span");
+    answerLabel.className = "section-label";
+    answerLabel.innerText = "Answer";
+
+    const answerText = document.createElement("p");
+    answerText.innerText = func.example.a;
+
+    answer.appendChild(answerLabel);
+    answer.appendChild(answerText);
+
+    content.appendChild(question);
+    content.appendChild(answer);
+    example.appendChild(content);
+  }
+
   // Changelog
   let changelog;
   if (func.changelog && func.changelog.length > 0) {
@@ -584,6 +659,8 @@ function add(func) {
   card.appendChild(header);
   card.appendChild(sub);
   card.appendChild(returnSection);
+  if (example != undefined)
+    card.appendChild(example);
   card.appendChild(argsSection);
   if (remarks != undefined)
     card.appendChild(remarks);

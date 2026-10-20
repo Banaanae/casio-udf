@@ -109,6 +109,83 @@
   margin: 0;
 }
 
+.function-example {
+  margin-top: 20px;
+}
+
+.example-title {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #334155;
+}
+
+.example-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.example-item {
+  padding: 12px 14px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.example-item .section-label {
+  margin-bottom: 6px;
+}
+
+.example-item p {
+  margin: 0;
+  color: #475569;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.example-answer {
+  background: #f5f3ff;
+  border-color: #ddd6fe;
+}
+
+.example-answer .section-label {
+  color: #7c3aed;
+}
+
+.example-answer p {
+  color: #4c1d95;
+}
+
+.function-example summary {
+  cursor: pointer;
+  user-select: none;
+
+  font-size: 0.95rem;
+  font-weight: bold;
+
+  list-style: none;
+}
+
+.function-example summary::-webkit-details-marker {
+  display: none;
+}
+
+.function-example summary::before {
+  content: "\203a";
+  display: inline-block;
+  margin-right: 8px;
+
+  font-size: 1.1rem;
+  transition: transform 0.15s ease;
+}
+
+.function-example[open] summary::before {
+  transform: rotate(90deg);
+}
+
 .section-label {
   display: block;
   margin-bottom: 5px;
